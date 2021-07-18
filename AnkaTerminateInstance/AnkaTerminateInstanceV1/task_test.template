@@ -1,0 +1,26 @@
+####################################################################################
+####################################################################################
+#### Copy this template to task_test.env and add your test-config values        ####
+#### !!!!!!!!!!!!! Never enter any secret / personal values here !!!!!!!!!!!!!! ####
+#### !!!!!!!!!!!!!!!!!!!!! Never commit the task_test.env !!!!!!!!!!!!!!!!!!!!! ####
+####################################################################################
+####################################################################################
+
+# Variables used to generate the link from the Anka Controller instance view to the Azure DevOps Build
+SYSTEM_TEAMFOUNDATIONCOLLECTIONURI=https://dev.azure.com/<org-name, for example "greatOrg">
+SYSTEM_TEAMPROJECT=<project-name, for example "greatProject">
+BUILD_BUILDID=<id-number of the build, for example "1234">
+
+# Variables used to access the Anka Controller and Registry API and the Azure DevOps Agent Pool
+INPUT_ANKACONTROLLERENDPOINT=AnkaEndpoint
+ENDPOINT_URL_AnkaEndpoint=<base-url of the Anka Controller and Registry without any sub-path, for example "https://localhost:8080">
+ENDPOINT_DATA_AnkaEndpoint_ANKAAGENTUSER=<name of the user to which to switch before starting the startup-script, for example "devopsagent">
+ENDPOINT_DATA_AnkaEndpoint_ANKAAGENTPATH=<path where the devops-agent should be installed, for example "/Users/devopsagent/agent">
+ENDPOINT_DATA_AnkaEndpoint_ANKAAGENTSCRIPT=<path to the startup-script inside the Anka-VM which should be started to install the devops-agent, for example "/Users/devopsagent/installAndStartAgent.sh">
+ENDPOINT_DATA_AnkaEndpoint_ANKAAGENTLOGS=<path where the log-files of the devops-agent should be saved, for example "/tmp">
+ENDPOINT_DATA_AnkaEndpoint_ANKAAGENTPROXY=<OPTIONAL URL to the proxy which mus be used inside a corporate network, for example "http://proxy.company.com:1234">
+ENDPOINT_DATA_AnkaEndpoint_ANKAAGENTPOOLNAME=<name of the agent-pool in Azure DevOps where the devops-agents should be registered, for example "Anka Build Agents">
+ENDPOINT_DATA_AnkaEndpoint_ANKAAGENTPOOLACCESSTOKEN=<PAT-access-token for managing the agent-pool from above, for example "g563gjh546gjg345jg4j2g5j4h6g3j456g3jg456">
+
+# Variables used to identify the Azure DevOps Agent
+INPUT_ANKAAGENTIDENTIFIER=<unique identifier to find the agent created by this task during the build, for example "greatProject_Build_456">

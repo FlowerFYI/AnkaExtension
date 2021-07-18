@@ -3,6 +3,7 @@ The dev machine needs to run Node v10.21.0 to ensure that the code written is co
 
 npm install -g typescript@4.0.2
 npm i -g tfx-cli@0.9.2
+npm i -g install-local@3.0.1
 
 internal
 

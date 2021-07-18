@@ -54,9 +54,11 @@ export class AnkaVM {
     constructor(ankaControllerUrl : string, useStrictSSL : boolean) {
         tl.debug("Setting up Anka-environment...");
 
-        this.controllerApiUrl = new URL(AnkaConstants.controllerApiUrlSuffix, ankaControllerUrl).toString();
+        this.controllerApiUrl = new URL(ankaControllerUrl + AnkaConstants.controllerApiUrlSuffix).toString();
+        tl.debug("Using Controller-API-URL: " + this.controllerApiUrl);
 
-        this.registryApiUrl = new URL(AnkaConstants.registryApiUrlSuffix, ankaControllerUrl).toString();
+        this.registryApiUrl = new URL(ankaControllerUrl + AnkaConstants.registryApiUrlSuffix).toString();
+        tl.debug("Using Registry-API-URL: " + this.registryApiUrl);
 
         this.strictSSL = useStrictSSL;
     }

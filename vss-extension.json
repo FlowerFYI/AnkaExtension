@@ -44,10 +44,12 @@
     },
     "files": [
       {
-        "path": "AnkaStartInstance"
+        "path": "AnkaStartInstance",
+        "packagePath": "AnkaStartInstance"
       },
       {
-        "path": "AnkaTerminateInstance"
+        "path": "AnkaTerminateInstance",
+        "packagePath": "AnkaTerminateInstance"
       }
 
     ],
