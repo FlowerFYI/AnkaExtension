@@ -1,7 +1,7 @@
 import tl = require('azure-pipelines-task-lib');
 import path = require('path');
-import anka = require('./common/anka');
-import devops = require('./common/devops');
+import anka = require('anka-controller');
+import devops = require('devopsagent-controller');
 
 class TaskOptions {
 
@@ -10,15 +10,21 @@ class TaskOptions {
     devopsAgent : devops.TaskAgent;
 
     constructor() {
-        const ankaControllerEndpoint = tl.getInput('ankaControllerEndpoint', true);
-        const ankaControllerEndpointUrl = tl.getEndpointUrl(ankaControllerEndpoint, false);
+        // tl.getInput will throw on undefined ankaControllerEndpoint, so no risk in forcing non-null through "!"
+        const ankaControllerEndpoint = tl.getInput('ankaControllerEndpoint', true)!;
+        // tl.getEndpointUrl will throw on undefined ankaControllerEndpointUrl, so no risk in forcing non-null through "!"
+        const ankaControllerEndpointUrl = tl.getEndpointUrl(ankaControllerEndpoint, false)!;
         tl.debug('ankaControllerEndpointUrl=' + ankaControllerEndpointUrl);
 
 
-        const agentPoolName = tl.getEndpointDataParameter(ankaControllerEndpoint, "ankaAgentPoolName", false);
-        const agentPoolAccessToken = tl.getEndpointDataParameter(ankaControllerEndpoint, "ankaAgentPoolAccessToken", false);
+        // tl.getEndpointDataParameter will throw on undefined ankaAgentPoolName, so no risk in forcing non-null through "!"
+        const agentPoolName = tl.getEndpointDataParameter(ankaControllerEndpoint, "ankaAgentPoolName", false)!;
 
-        const agentIdentifier = tl.getInput('ankaAgentIdentifier', true);
+        // tl.getEndpointDataParameter will throw on undefined ankaAgentPoolAccessToken, so no risk in forcing non-null through "!"
+        const agentPoolAccessToken = tl.getEndpointDataParameter(ankaControllerEndpoint, "ankaAgentPoolAccessToken", false)!;
+
+        // tl.getInput will throw on undefined ankaAgentIdentifier, so no risk in forcing non-null through "!"
+        const agentIdentifier = tl.getInput('ankaAgentIdentifier', true)!;
 
         const agentDevOpsUrl : string|undefined = process.env["SYSTEM_TEAMFOUNDATIONCOLLECTIONURI"];
 

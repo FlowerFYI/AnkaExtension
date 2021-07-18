@@ -1,6 +1,5 @@
 import tl = require('azure-pipelines-task-lib');
 import request = require('request');
-import util = require('./util');
 
 export const enum AnkaState {
     STARTED = "Started",
@@ -48,9 +47,9 @@ export class AnkaVM {
     constructor(ankaControllerUrl : string, useStrictSSL : boolean) {
         tl.debug("Setting up Anka-environment...");
 
-        this.controllerApiUrl = util.addUrlSegment(ankaControllerUrl, AnkaConstants.controllerApiUrlSuffix);
+        this.controllerApiUrl = new URL(AnkaConstants.controllerApiUrlSuffix, ankaControllerUrl).toString();
 
-        this.registryApiUrl = util.addUrlSegment(ankaControllerUrl, AnkaConstants.registryApiUrlSuffix);
+        this.registryApiUrl = new URL(AnkaConstants.registryApiUrlSuffix, ankaControllerUrl).toString();
 
         this.strictSSL = useStrictSSL;
     }

@@ -224,7 +224,7 @@ export class TaskAgent {
                 reject(err);
             }
 
-            resolve(this.agent);
+            resolve(this.agent!);
         });
     }
 

@@ -1,7 +1,7 @@
 import tl = require('azure-pipelines-task-lib');
 import path = require('path');
-import anka = require('./common/anka');
-import devops = require('./common/devops');
+import anka = require('anka-controller');
+import devops = require('devopsagent-controller');
 
 
 class TaskOptions {
@@ -13,8 +13,10 @@ class TaskOptions {
     ankaVmName : string = "";
 
     constructor() {
-        const ankaControllerEndpoint = tl.getInput('ankaControllerEndpoint', true);
-        const ankaControllerEndpointUrl = tl.getEndpointUrl(ankaControllerEndpoint, false);
+        // tl.getInput will throw on undefined ankaControllerEndpoint, so no risk in forcing non-null through "!"
+        const ankaControllerEndpoint = tl.getInput('ankaControllerEndpoint', true)!;
+        // tl.getEndpointUrl will throw on undefined ankaControllerEndpointUrl, so no risk in forcing non-null through "!"
+        const ankaControllerEndpointUrl = tl.getEndpointUrl(ankaControllerEndpoint, false)!;
         tl.debug('ankaControllerEndpointUrl=' + ankaControllerEndpointUrl);
 
         const ankaAgentUser = tl.getEndpointDataParameter(ankaControllerEndpoint, "ankaAgentUser", false);
@@ -26,14 +28,20 @@ class TaskOptions {
             ankaAgentProxy = "--proxyurl " + ankaAgentProxy;
         }
 
-        const agentPoolName = tl.getEndpointDataParameter(ankaControllerEndpoint, "ankaAgentPoolName", false);
-        const agentPoolAccessToken = tl.getEndpointDataParameter(ankaControllerEndpoint, "ankaAgentPoolAccessToken", false);
+        // tl.getEndpointDataParameter will throw on undefined ankaAgentPoolName, so no risk in forcing non-null through "!"
+        const agentPoolName = tl.getEndpointDataParameter(ankaControllerEndpoint, "ankaAgentPoolName", false)!;
 
-        const agentIdentifier = tl.getInput('ankaAgentIdentifier', true);
+        // tl.getEndpointDataParameter will throw on undefined ankaAgentPoolAccessToken, so no risk in forcing non-null through "!"
+        const agentPoolAccessToken = tl.getEndpointDataParameter(ankaControllerEndpoint, "ankaAgentPoolAccessToken", false)!;
 
-        const ankaVmName = tl.getInput('ankaVmName', true);
+        // tl.getInput will throw on undefined ankaAgentIdentifier, so no risk in forcing non-null through "!"
+        const agentIdentifier = tl.getInput('ankaAgentIdentifier', true)!;
 
-        const ankaVmTag = tl.getInput('ankaVmTag', true);
+        // tl.getInput will throw on undefined ankaVmName, so no risk in forcing non-null through "!"
+        const ankaVmName = tl.getInput('ankaVmName', true)!;
+
+        // tl.getInput will throw on undefined ankaVmTag, so no risk in forcing non-null through "!"
+        const ankaVmTag = tl.getInput('ankaVmTag', true)!;
 
         const agentDevOpsUrl = process.env["SYSTEM_TEAMFOUNDATIONCOLLECTIONURI"];
         const agentDevOpsBuildUrl = process.env["SYSTEM_TEAMFOUNDATIONCOLLECTIONURI"] + "/" + process.env["SYSTEM_TEAMPROJECT"] + "/_build/results?buildId=" + process.env["BUILD_BUILDID"];
