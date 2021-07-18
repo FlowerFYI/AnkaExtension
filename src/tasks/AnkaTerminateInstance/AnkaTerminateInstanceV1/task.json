@@ -19,6 +19,7 @@
             "isExpanded": true
         }
     ],
+    "minimumAgentVersion": "2.144.0",
     "instanceNameFormat": "Terminate Anka Instance $(ankaAgentIdentifier)",
     "inputs": [
         {
