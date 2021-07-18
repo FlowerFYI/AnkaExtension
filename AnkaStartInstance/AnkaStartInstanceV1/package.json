@@ -1,5 +1,5 @@
 {
-  "name": "ankaprovisioninstance",
+  "name": "ankastartinstance",
   "version": "0.0.1",
   "description": "Azure DevOps pipeline task for provisioning an Anka instance through the Anka controller.",
   "main": "index.js",
