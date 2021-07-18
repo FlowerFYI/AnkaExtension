@@ -1,13 +1,14 @@
 {
-  "name": "ankaterminateinstance",
+  "name": "ankastartinstance",
   "version": "1.0.0",
-  "description": "Azure DevOps pipeline task for terminating an Anka instance through the Anka controller.",
+  "description": "Azure DevOps pipeline task for starting an Anka instance through the Anka controller.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "update-common": "install-local",
     "compile": "npm run update-common && tsc",
-    "start": "npm run compile && npx env-cmd -f task_test.env node index.js"
+    "start": "npm run compile && npx env-cmd -f task_test.env node index.js",
+    "prepare-extension": "npm prune --production && npm run compile"
   },
   "author": "FlowerFYI",
   "license": "MIT",
@@ -21,7 +22,7 @@
     "typescript": "^4.0.2"
   },
   "localDependencies": {
-    "anka-controller": "../../common/anka-controller",
-    "devopsagent-controller": "../../common/devopsagent-controller"
+    "anka-controller": "../../../common/anka-controller",
+    "devopsagent-controller": "../../../common/devopsagent-controller"
   }
 }

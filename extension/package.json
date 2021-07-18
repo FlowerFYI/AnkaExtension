@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "description": "NPM package used for building the Azure DevOps extension.",
   "scripts": {
-    "prepare-startinstance-v1": "cd AnkaStartInstance/AnkaStartInstanceV1 && npm run prepare-extension",
+    "prepare-startinstance-v1": "cd ../src/tasks/AnkaStartInstance/AnkaStartInstanceV1 && npm run prepare-extension",
     "prepare-startinstance": "npm run prepare-startinstance-v1",
-    "prepare-terminateinstance-v1": "cd AnkaTerminateInstance/AnkaTerminateInstanceV1 && npm run prepare-extension",
+    "prepare-terminateinstance-v1": "cd ../src/tasks/AnkaTerminateInstance/AnkaTerminateInstanceV1 && npm run prepare-extension",
     "prepare-terminateinstance": "npm run prepare-terminateinstance-v1",
     "prepare-tasks": "npm run prepare-startinstance && npm run prepare-terminateinstance",
     "build-extension": "npm run prepare-tasks && tfx extension create"

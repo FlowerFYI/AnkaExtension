@@ -44,11 +44,11 @@
     },
     "files": [
       {
-        "path": "AnkaStartInstance",
+        "path": "../src/tasks/AnkaStartInstance",
         "packagePath": "AnkaStartInstance"
       },
       {
-        "path": "AnkaTerminateInstance",
+        "path": "../src/tasks/AnkaTerminateInstance",
         "packagePath": "AnkaTerminateInstance"
       }
 
