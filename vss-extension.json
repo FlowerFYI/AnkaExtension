@@ -1,9 +1,9 @@
 {
     "manifestVersion": 1,
-    "id": "anka-build-cloud",
-    "name": "Anka Build Cloud",
-    "version": "1.3.0",
-    "publisher": "SennheiserelectronicGmbHCoKG",
+    "id": "anka-build-cloud-integration",
+    "name": "Anka Build Cloud Integration",
+    "version": "0.0.1",
+    "publisher": "FlowerFYI",
     "targets": [
       {
         "id": "Microsoft.VisualStudio.Services"
@@ -29,6 +29,9 @@
       }
     ],
     "content": {
+      "license": {
+        "path": "LICENSE.md"
+      }
     },
     "links": {
     },
@@ -41,10 +44,10 @@
     },
     "files": [
       {
-        "path": "AnkaProvisionVM"
+        "path": "AnkaStartInstance"
       },
       {
-        "path": "AnkaTerminateVM"
+        "path": "AnkaTerminateInstance"
       }
 
     ],
@@ -177,23 +180,23 @@
         }
       },
       {
-        "id": "AnkaProvisionVM",
+        "id": "AnkaStartInstance",
         "type": "ms.vss-distributed-task.task",
         "targets": [
           "ms.vss-distributed-task.tasks"
         ],
         "properties": {
-          "name": "AnkaProvisionVM"
+          "name": "AnkaStartInstance"
         }
       },
       {
-        "id": "AnkaTerminateVM",
+        "id": "AnkaTerminateInstance",
         "type": "ms.vss-distributed-task.task",
         "targets": [
           "ms.vss-distributed-task.tasks"
         ],
         "properties": {
-          "name": "AnkaTerminateVM"
+          "name": "AnkaTerminateInstance"
         }
       }
     ]

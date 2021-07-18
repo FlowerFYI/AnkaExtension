@@ -1,14 +1,15 @@
 {
+    "$schema": "https://raw.githubusercontent.com/Microsoft/azure-pipelines-task-lib/master/tasks.schema.json",
     "id": "406ec5be-025d-471e-ab12-5a0746a48914",
-    "name": "AnkaTerminateVM",
-    "friendlyName": "Anka Terminate VM-Instance",
+    "name": "AnkaTerminateInstance",
+    "friendlyName": "Anka Terminate Instance",
     "description": "Terminates an Instance of an Anka Image and removes the corresponding Build-Host.",
     "helpMarkDown": "",
     "category": "Build",
-    "author": "SennheiserelectronicGmbHCoKG",
+    "author": "FlowerFYI",
     "version": {
-        "Major": 1,
-        "Minor": 3,
+        "Major": 0,
+        "Minor": 1,
         "Patch": 0
     },
     "groups": [
@@ -18,7 +19,7 @@
             "isExpanded": true
         }
     ],
-    "instanceNameFormat": "Terminate Anka VM",
+    "instanceNameFormat": "Terminate Anka Instance $(ankaAgentIdentifier)",
     "inputs": [
         {
             "name": "ankaControllerEndpoint",
@@ -38,8 +39,8 @@
         }
     ],
     "execution": {
-        "Node": {
-            "target": "ankaterminatevm.js"
+        "Node10": {
+            "target": "index.js"
         }
     }
 }

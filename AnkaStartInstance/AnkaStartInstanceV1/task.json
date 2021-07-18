@@ -1,13 +1,14 @@
 {
+    "$schema": "https://raw.githubusercontent.com/Microsoft/azure-pipelines-task-lib/master/tasks.schema.json",
     "id": "d1cb98d7-9762-4726-8a93-25e817c722ba",
-    "name": "AnkaProvisionVM",
-    "friendlyName": "Anka Provision VM-Instance",
-    "description": "Provisions an Instance of an Anka Image and starts this as a Build-Host.",
+    "name": "AnkaStartInstance",
+    "friendlyName": "Anka Start Instance",
+    "description": "Starts an Instance of an Anka Image and starts this as a Build-Host.",
     "helpMarkDown": "",
     "category": "Build",
-    "author": "SennheiserelectronicGmbHCoKG",
+    "author": "FlowerFYI",
     "version": {
-        "Major": 2,
+        "Major": 0,
         "Minor": 1,
         "Patch": 0
     },
@@ -18,7 +19,7 @@
             "isExpanded": true
         }
     ],
-    "instanceNameFormat": "Provision Anka VM",
+    "instanceNameFormat": "Start Anka Instance $(ankaVmName)",
     "inputs": [
         {
             "name": "ankaControllerEndpoint",
@@ -54,8 +55,8 @@
         }
     ],
     "execution": {
-        "Node": {
-            "target": "ankaprovisionvm.js"
+        "Node10": {
+            "target": "index.js"
         }
     }
 }
