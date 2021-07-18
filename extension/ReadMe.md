@@ -7,7 +7,7 @@ This package currently provides the following build commands:
 `npm run build-extension` 
 Calls "prepare-tasks" and then builds the extension through TFX.
 
-# For internal usage
+## For internal usage
 
 ### prepare-startinstance-v1
 `npm run prepare-startinstance-v1` 
