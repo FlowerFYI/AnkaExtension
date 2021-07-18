@@ -1,0 +1,45 @@
+{
+    "id": "406ec5be-025d-471e-ab12-5a0746a48914",
+    "name": "AnkaTerminateVM",
+    "friendlyName": "Anka Terminate VM-Instance",
+    "description": "Terminates an Instance of an Anka Image and removes the corresponding Build-Host.",
+    "helpMarkDown": "",
+    "category": "Build",
+    "author": "SennheiserelectronicGmbHCoKG",
+    "version": {
+        "Major": 1,
+        "Minor": 3,
+        "Patch": 0
+    },
+    "groups": [
+        {
+            "name": "advanced",
+            "displayName": "Advanced",
+            "isExpanded": true
+        }
+    ],
+    "instanceNameFormat": "Terminate Anka VM",
+    "inputs": [
+        {
+            "name": "ankaControllerEndpoint",
+            "type": "connectedService:ankacontroller",
+            "label": "Anka-Controller",
+            "defaultValue": "",
+            "required": true,
+            "helpMarkDown": "Select the Anka-Controller to use."
+        },
+        {
+            "name": "ankaAgentIdentifier",
+            "type": "string",
+            "label": "Anka-Agent-Identifier",
+            "defaultValue": "",
+            "required": true,
+            "helpMarkDown": "Unique Identifier for the Agent to be removed."
+        }
+    ],
+    "execution": {
+        "Node": {
+            "target": "ankaterminatevm.js"
+        }
+    }
+}

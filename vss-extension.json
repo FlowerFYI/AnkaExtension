@@ -1,0 +1,201 @@
+{
+    "manifestVersion": 1,
+    "id": "anka-build-cloud",
+    "name": "Anka Build Cloud",
+    "version": "1.3.0",
+    "publisher": "SennheiserelectronicGmbHCoKG",
+    "targets": [
+      {
+        "id": "Microsoft.VisualStudio.Services"
+      }
+    ],
+    "public": false,
+    "scope": [
+      "vso.build"
+    ],
+    "description": "Multiple tasks to integrate the usage of a local Anka MacOS-Build-Cloud into Azure DevOps",
+    "categories": [
+      "Azure Pipelines"
+    ],
+    "tags": [
+      "Build",
+      "Anka",
+      "Veertu",
+      "MacOS"
+    ],
+    "screenshots": [
+      {
+        "path": "images/extension-icon.png"
+      }
+    ],
+    "content": {
+    },
+    "links": {
+    },
+    "branding": {
+      "color": "rgb(235, 28, 116)",
+      "theme": "dark"
+    },
+    "icons": {
+      "default": "images/extension-icon.png"
+    },
+    "files": [
+      {
+        "path": "AnkaProvisionVM"
+      },
+      {
+        "path": "AnkaTerminateVM"
+      }
+
+    ],
+    "contributions": [
+      {
+        "id": "service-endpoint",
+        "description": "Service endpoint type for Anka-Controller connections",
+        "type": "ms.vss-endpoint.service-endpoint-type",
+        "targets": [ "ms.vss-endpoint.endpoint-types" ],
+        "properties": {
+          "name": "ankacontroller",
+          "displayName": "Anka-Controller connection",
+          "url": {
+            "displayName": "Server Url",
+            "helpText": "Url for the Anka-Controller to connect to."
+          },
+          "helpMarkDown": "Enter the Server-URL of your Anka-Controller in the format https://...",
+          "authenticationSchemes": [
+          {
+            "type": "ms.vss-endpoint.endpoint-auth-scheme-none"
+          }
+        ],
+          "inputDescriptors": [
+            {
+              "id": "ankaAgentUser",
+              "name": "User for Agent",
+              "description": "User under which the DevOps-Agent should be executed in virtual machine",
+              "type": null,
+              "properties": null,
+              "inputMode": "textBox",
+              "isConfidential": false,
+              "useInDefaultDescription": false,
+              "groupName": null,
+              "valueHint": null,
+              "validation": {
+                "isRequired": true
+              }
+            },
+            {
+              "id": "ankaAgentScript",
+              "name": "Path to script",
+              "description": "Path to agent startup-script (including script-name) in virtual machine",
+              "type": null,
+              "properties": null,
+              "inputMode": "textBox",
+              "isConfidential": false,
+              "useInDefaultDescription": false,
+              "groupName": null,
+              "valueHint": null,
+              "validation": {
+                "isRequired": true
+              }
+            },
+            {
+              "id": "ankaAgentPath",
+              "name": "Install-Path for Agent",
+              "description": "Path where to install the downloaded agent in the virtual machine",
+              "type": null,
+              "properties": null,
+              "inputMode": "textBox",
+              "isConfidential": false,
+              "useInDefaultDescription": false,
+              "groupName": null,
+              "valueHint": null,
+              "validation": {
+                "isRequired": true
+              }
+            },
+            {
+              "id": "ankaAgentLogs",
+              "name": "Path to Agent-Logs",
+              "description": "Path to logs for the agent in virtual machine (for example /tmp)",
+              "type": null,
+              "properties": null,
+              "inputMode": "textBox",
+              "isConfidential": false,
+              "useInDefaultDescription": false,
+              "groupName": null,
+              "valueHint": null,
+              "validation": {
+                "isRequired": true
+              }
+            },
+            {
+              "id": "ankaAgentProxy",
+              "name": "Proxy for Agent-Connection",
+              "description": "Proxy for Agent-Connection",
+              "type": null,
+              "properties": null,
+              "inputMode": "textBox",
+              "isConfidential": false,
+              "useInDefaultDescription": false,
+              "groupName": null,
+              "valueHint": null,
+              "validation": {
+                "isRequired": false
+              }
+            },
+            {
+              "id": "ankaAgentPoolName",
+              "name": "Agentpool for VMs",
+              "description": "Agentpool for VMs",
+              "type": null,
+              "properties": null,
+              "inputMode": "textBox",
+              "isConfidential": false,
+              "useInDefaultDescription": false,
+              "groupName": null,
+              "valueHint": null,
+              "validation": {
+                "isRequired": true
+              }
+            },
+            {
+              "id": "ankaAgentPoolAccessToken",
+              "name": "PAT for Agentpool",
+              "description": "PAT for Agentpool",
+              "type": null,
+              "properties": null,
+              "inputMode": "textBox",
+              "isConfidential": true,
+              "useInDefaultDescription": false,
+              "groupName": null,
+              "valueHint": null,
+              "validation": {
+                "isRequired": true
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "AnkaProvisionVM",
+        "type": "ms.vss-distributed-task.task",
+        "targets": [
+          "ms.vss-distributed-task.tasks"
+        ],
+        "properties": {
+          "name": "AnkaProvisionVM"
+        }
+      },
+      {
+        "id": "AnkaTerminateVM",
+        "type": "ms.vss-distributed-task.task",
+        "targets": [
+          "ms.vss-distributed-task.tasks"
+        ],
+        "properties": {
+          "name": "AnkaTerminateVM"
+        }
+      }
+    ]
+  }
+  
